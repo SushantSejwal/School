@@ -35,11 +35,7 @@ while is_sushant_awesome:
         emp_sal = int(input(f'Enter {emp_name} Salary\n =>  '))
 
         if emp_sal <= 50_000:
-
-            awesome = 0
-            if awesome < 1:
-                emp_sal_above_50_k = True # creating a flag for after use if some one has a salary <= 50K
-                awesome += 1
+            emp_sal_above_50_k = True # creating a flag for after use if some one has a salary <= 50K
             
         emp_mob_no = int(input(f'Enter {emp_name} Mobile Number\n =>  '))
         # Checking mobile number

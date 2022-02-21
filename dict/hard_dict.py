@@ -7,6 +7,7 @@ Store = dict()  # empty dictionary store
 
 def ins():
     
+    # function to store all code that insert values
     def main_ins():
         if item_name in Store:
             print(f"{item_name} already exist in Store, {item_name} values will get update")
@@ -33,10 +34,10 @@ def ins():
             
             if more_or_not.isalpha():
                 if more_or_not == 'n' or more_or_not == 'no':
-                    steve_jobs = False # because of the Steve jobs flag value will turn to false and the main loop will end
-                    break # because of this second loop will or the loop inside the loop will break and the inner loop will terminate
+                    steve_jobs = False # the main loop will terminate
+                    break # the inner loop will terminate
                 elif more_or_not == 'y' or more_or_not == 'yes':
-                   break # because of this second loop will or the loop inside the loop will break and the inner loop will terminate
+                   break # the inner loop will terminate
                     
                 else:
                     print('whooopse didn\'t get it')
@@ -68,7 +69,8 @@ def ins():
 
 def update():
 
-    def main_update():
+    # function to store all code that update
+    def update_all():
         if not (item_name in Store):
             print(f"{item_name}  doesn\'t exist in the Store, {item_name} and it\'s values will get add")
             print() # empty line for formatting
@@ -76,28 +78,78 @@ def update():
         item_price = int(input(f'Enter the price of {item_name} in Rs\n -->  '))
         item_quan = int(input(f'Enter the quantity of {item_name}\n -->  '))
         item_comp = input(f'Enter the company name or manufacturer name of {item_name}\n -->  ')
+        
+        Store[item_name] = dict([('Price', item_price),('Quantity', item_quan), ('Company Name', item_comp)])
+
         print() # empty line for formatting
         print(f' --->>  "{item_name}" has been update')
         print() # empty line for formatting
 
-        Store[item_name] = dict([('Price', item_price),('Quantity', item_quan), ('Company Name', item_comp)])
+    def update_price():
+        if item_name in Store:
+            item_price = int(input(f'Enter the price of {item_name} in Rs\n -->  '))
+            Store[item_name]['Price'] = item_price
+            print() # empty line for formatting
+            print(f' --->>  "{item_name}" price has been update')
+            print() # empty line for formatting
         
+        else:
+            print(f'{item_name} doesn\'t exist in the Store. try adding it')
+            
+
+    def update_quantity():
+        if item_name in Store:
+            item_quan = int(input(f'Enter the quantity of {item_name}\n -->  '))
+            Store[item_name]['Quantity'] = item_quan
+            print() # empty line for formatting
+            print(f' --->>  "{item_name}" quantity has been update')
+            print() # empty line for formatting
+        
+        else:
+            print(f'{item_name} doesn\'t exist in the Store. try adding it')
+
+    def update_company():
+        if item_name in Store:
+            item_comp = input(f'Enter the company name or manufacturer name of {item_name}\n -->  ')
+            Store[item_name]['Company Name'] = item_comp
+            print() # empty line for formatting
+            print(f' --->>  "{item_name}" company name has been update')
+            print() # empty line for formatting
+        
+        else:
+            print(f'{item_name} doesn\'t exist in the Store. try adding it')
         
     steve_jobs = True # flag for the loop inside function
     
     while steve_jobs:
         item_name = input('Enter the name of item\n -->  ')
-        main_update()
+        
+        if item_name not in Store:
+            update_all()
+            
+        else:
+            what_to_update = input('which item you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n    -->  ').lower().strip()
+
+            if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
+                update_price()
+            elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
+                 update_quantity()
+            elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
+                update_company()
+            elif what_to_update == '4' or what_to_update == 'all':
+                update_all()
+            
+        
         
         while True:
             more_or_not = input('type yes[Y] to update more items or no[N] to leave or just type number of items you want to update\n -->  ').strip().lower()
             
             if more_or_not.isalpha():
                 if more_or_not == 'n' or more_or_not == 'no':
-                    steve_jobs = False # because of the Steve jobs flag value will turn to false and the main loop will end
-                    break # because of this second loop will or the loop inside the loop will break and the inner loop will terminate
+                    steve_jobs = False # the main loop will terminate
+                    break # the inner loop will terminate
                 elif more_or_not == 'y' or more_or_not == 'yes':
-                   break # because of this second loop will or the loop inside the loop will break and the inner loop will terminate
+                   break # the inner loop will terminate
                     
                 else:
                     print('whooopse didn\'t get it')
@@ -116,7 +168,17 @@ def update():
                         item_name = input(f'Enter the name of {i}rd item\n -->  ')
                     elif i > 3:
                         item_name = input(f'Enter the name of {i}th item\n -->  ')
-                    main_update()
+                        
+                    what_to_update = input('what you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n   -->  ').lower().strip()
+        
+                    if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
+                        update_price()
+                    elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
+                         update_quantity()
+                    elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
+                        update_company()
+                    elif what_to_update == '4' or what_to_update == 'all':
+                        update_all()
                     
                 steve_jobs = False
                 break

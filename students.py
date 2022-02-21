@@ -2,7 +2,8 @@
 # display the names of students who have marks above 75.
 
 # Creating  awesome flag
-is_sushant_awesome = True
+is_sushant_awesome = "may be"
+marks_above_75 = False
 
 Class_sd = {}
 
@@ -27,11 +28,13 @@ while is_sushant_awesome:
         std_name = input('Enter the name of student\n =>  ')
         std_roll = input(f'Enter the roll number of {std_name}\n =>  ')
         std_marks = int(input(f'Enter marks of {std_name} out of 100\n =>  '))
+        if std_marks > 75:
+            marks_above_75 = True
         if std_marks > 100 or std_marks < 0:
             std_marks = int(input('WHOOPSE Enter marks between 0 to 100\n =>  '))
         
 
-        Class_sd[std_name] = dict([('Roll No',std_roll),('Marks',std_roll)])
+        Class_sd[std_name] = dict([('Roll No',std_roll),('Marks',std_marks)])
         print() # Empty line for formatting
         
     else:
@@ -39,10 +42,11 @@ while is_sushant_awesome:
         continue
 
 
-print('Students who get marks equal to and above 75 are :')
-for names in Class_sd:
-    if Class_sd[names]['Marks'] >= 75:
-        print(f' {names}')
+if marks_above_75:
+    print('Students who get marks above 75 are :')
+    for names in Class_sd:
+        if Class_sd[names]['Marks'] > 75:
+            print(f' Name - {names}, marks - {Class_sd[names]["Marks"]}')
 
 else:
-    print('There\'s no one in the class who got marks equal to and above 75')
+    print('There\'s no one in the class who got marks above 75')
