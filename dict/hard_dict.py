@@ -70,8 +70,14 @@ def ins():
 def update():
 
     # function to store all code that update
+    
+    #FLAG for store items
+    global item_in_store
+    item_in_store = True
+    
     def update_all():
         if not (item_name in Store):
+            item_in_store = False
             print(f"{item_name}  doesn\'t exist in the Store, {item_name} and it\'s values will get add")
             print() # empty line for formatting
 
@@ -82,7 +88,10 @@ def update():
         Store[item_name] = dict([('Price', item_price),('Quantity', item_quan), ('Company Name', item_comp)])
 
         print() # empty line for formatting
-        print(f' --->>  "{item_name}" has been update')
+        if item_in_store:
+            print(f' --->>  "{item_name}" has been update')
+        else:
+            print(f' --->>  "{item_name}" has been added')
         print() # empty line for formatting
 
     def update_price():
@@ -128,16 +137,23 @@ def update():
             update_all()
             
         else:
-            what_to_update = input('which item you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n    -->  ').lower().strip()
+            while True:
+                what_to_update = input('what you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n   -->  ').lower().strip()
 
-            if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
-                update_price()
-            elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
-                 update_quantity()
-            elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
-                update_company()
-            elif what_to_update == '4' or what_to_update == 'all':
-                update_all()
+                if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
+                    update_price()
+                    break
+                elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
+                    update_quantity()
+                    break
+                elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
+                    update_company()
+                    break
+                elif what_to_update == '4' or what_to_update == 'all':
+                    update_all()
+                    break
+                else:
+                    continue
             
         
         
@@ -169,16 +185,27 @@ def update():
                     elif i > 3:
                         item_name = input(f'Enter the name of {i}th item\n -->  ')
                         
-                    what_to_update = input('what you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n   -->  ').lower().strip()
-        
-                    if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
-                        update_price()
-                    elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
-                         update_quantity()
-                    elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
-                        update_company()
-                    elif what_to_update == '4' or what_to_update == 'all':
+                    if item_name not in Store:
                         update_all()
+            
+                    else:
+                        while True:
+                            what_to_update = input('what you want to update\n\t1 : for price\n\t2 : for quantity\n\t3 : for company name\n\t4 : for all\n   -->  ').lower().strip()
+
+                            if what_to_update == '1' or what_to_update == 'price' or what_to_update == 'rs':
+                                update_price()
+                                break
+                            elif what_to_update == '2' or what_to_update == 'quan' or what_to_update == 'quantity':
+                                 update_quantity()
+                                 break
+                            elif what_to_update == '3' or what_to_update == 'company name' or what_to_update == 'comp name':
+                                update_company()
+                                break
+                            elif what_to_update == '4' or what_to_update == 'all':
+                                update_all()
+                                break
+                            else:
+                                continue
                     
                 steve_jobs = False
                 break
@@ -362,3 +389,147 @@ while sushant:
         display()
     else:
         continue
+
+
+# output
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  h
+
+#                 <----------    help    ---------->
+
+#             ->  type 1 or insert or ins to add items into the dictionary Store
+#             ->  type 2 or update or updt to update items in the dictinary Store    
+#             ->  type 3 or delete or del to delete items from the dictinary Store    
+#             ->  type 4 or search or srch to find items in the dictinary Store    
+#             ->  type 5 or show or disp to show the dictinary Store    
+#             ->  type 6 or quit or q to quit    
+#             ->  type 7 or help or h to show this message again    
+
+#                 <-------------------------------->
+
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  ins
+
+# Enter the name of item
+#  -->  iPhone
+# Enter the price of iPhone in Rs
+#  -->  1_39_000
+# Enter the quantity of iPhone
+#  -->  345
+# Enter the company name or manufacturer name of iPhone
+#  -->  Apple
+
+#  --->>  "iPhone" has been added in the Store
+
+# type yes[Y] to add more items or no[N] to leave or just type number of items you want to add
+#  -->  n
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  1
+
+# Enter the name of item
+#  -->  iPad
+# Enter the price of iPad in Rs
+#  -->  2_19_000
+# Enter the quantity of iPad
+#  -->  567
+# Enter the company name or manufacturer name of iPad
+#  -->  Appler
+
+#  --->>  "iPad" has been added in the Store
+
+# type yes[Y] to add more items or no[N] to leave or just type number of items you want to add
+#  -->  n
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  2
+
+# Enter the name of item
+#  -->  iPad
+# which item you want to update
+#         1 : for price
+#         2 : for quantity
+#         3 : for company name
+#         4 : for all
+#     -->  3
+# Enter the company name or manufacturer name of iPad
+#  -->  Apple
+
+#  --->>  "iPad" company name has been update
+
+# type yes[Y] to update more items or no[N] to leave or just type number of items you want to update
+#  -->  2
+# Enter the name of 1st item
+#  -->  Apple Watch
+# Apple Watch  doesn't exist in the Store, Apple Watch and it's values will get add
+
+# Enter the price of Apple Watch in Rs
+#  -->  45_890
+# Enter the quantity of Apple Watch
+#  -->  567
+# Enter the company name or manufacturer name of Apple Watch
+#  -->  Apple
+
+#  --->>  "Apple Watch" has been added
+
+# Enter the name of 2nd item
+#  -->  iPad
+# what you want to update
+#         1 : for price
+#         2 : for quantity
+#         3 : for company name
+#         4 : for all
+#    -->  6
+# what you want to update
+#         1 : for price
+#         2 : for quantity
+#         3 : for company name
+#         4 : for all
+#    -->  7
+# what you want to update
+#         1 : for price
+#         2 : for quantity
+#         3 : for company name
+#         4 : for all
+#    -->  2
+# Enter the quantity of iPad
+#  -->  678
+
+#  --->>  "iPad" quantity has been update
+
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  h
+
+#                 <----------    help    ---------->
+
+#             ->  type 1 or insert or ins to add items into the dictionary Store
+#             ->  type 2 or update or updt to update items in the dictinary Store
+#             ->  type 3 or delete or del to delete items from the dictinary Store
+#             ->  type 4 or search or srch to find items in the dictinary Store
+#             ->  type 5 or show or disp to show the dictinary Store
+#             ->  type 6 or quit or q to quit
+#             ->  type 7 or help or h to show this message again
+
+#                 <-------------------------------->
+
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  show
+
+# Store -> {
+#     "iPhone": {
+#         "Price": 139000,
+#         "Quantity": 345,
+#         "Company Name": "Apple"
+#     },
+#     "iPad": {
+#         "Price": 219000,
+#         "Quantity": 678,
+#         "Company Name": "Apple"
+#     },
+#     "Apple Watch": {
+#         "Price": 45890,
+#         "Quantity": 567,
+#         "Company Name": "Apple"
+#     }
+# }
+
+# type help[h] for help or function name or number to perform operations or type quit[q] to leave
+#  -->  q

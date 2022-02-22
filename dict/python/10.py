@@ -42,7 +42,7 @@ while awesome:
     # time when user will loose
     elif (choice == 'snake' or choice == 's') and (comp_choice == 'g'):
         print('your choice -> Snake')
-        print('computer\'s choice -> Snake')
+        print('computer\'s choice -> Gun')
         print(' - you loose - ')
         
     elif (choice == 'water' or choice == 'w') and (comp_choice == 's'):
@@ -54,6 +54,22 @@ while awesome:
         print('your choice -> Gun')
         print('computer\'s choice -> Water')
         print(' - you loose - ')
+        
+    # when both will tie
+    elif (choice == 'snake' or choice == 's') and (comp_choice == 's'):
+        print('your choice -> Snake')
+        print('computer\'s choice -> Snake')
+        print(' - Match tied - ')
+        
+    elif (choice == 'water' or choice == 'w') and (comp_choice == 'w'):
+        print('your choice -> Water')
+        print('computer\'s choice -> Water')
+        print(' - Match tied - ')
+        
+    elif (choice == 'gun' or choice == 'g') and (comp_choice == 'g'):
+        print('your choice -> Gun')
+        print('computer\'s choice -> Gun')
+        print(' - Match tied - ')
         
     else:
         print('WHOOPSE didn\'t understand')
@@ -67,22 +83,28 @@ while awesome:
 #     ####    <--> Snake(🐍) <-->    <--> Water(🌊) <-->    <--> Gun(🔫) <-->     ####    
 
 # Choose from Snake[S], Water[W] and Gun[G] or type quit[Q] to leave
-#  ->  w
-# your choice -> Water
-# computer's choice -> Snake
+#  ->  s
+# your choice -> Snake
+# computer's choice -> Gun
 #  - you loose - 
 
 # Choose from Snake[S], Water[W] and Gun[G] or type quit[Q] to leave
-#  ->  s
-# your choice -> Snake
-# computer's choice -> Water
+#  ->  water
+# your choice -> Water
+# computer's choice -> Gun
 #  - you win - 
 
 # Choose from Snake[S], Water[W] and Gun[G] or type quit[Q] to leave
-#  ->  g
-# your choice -> Gun        
+#  ->  Snake
+# your choice -> Snake      
+# computer's choice -> Snake
+#  - Match tied - 
+
+# Choose from Snake[S], Water[W] and Gun[G] or type quit[Q] to leave
+#  ->  gun
+# your choice -> Gun
 # computer's choice -> Snake
 #  - you win -
 
 # Choose from Snake[S], Water[W] and Gun[G] or type quit[Q] to leave
-#  ->  q
+#  ->  quit
